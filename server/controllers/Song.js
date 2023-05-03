@@ -125,13 +125,13 @@ const getSearch = async (req, res) => {
 //Returns Search result of API call
 const showSearchRes = async (req, res) => {
   //Holds retrieved data 
-  const data = {
+  const searchData = {
     term: req.body.term, 
     limit: 3,
     owner: req.session.account._id,
   };     
   
-  const url = `https://shazam.p.rapidapi.com/search?term=${data.term}&locale=en-US&offset=0&limit=${data.limit}`;
+  const url = `https://shazam.p.rapidapi.com/search?term=${searchData.term}&locale=en-US&offset=0&limit=${searchData.limit}`;
   const options = {
     method: 'GET',
     headers: {

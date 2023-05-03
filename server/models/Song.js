@@ -3,8 +3,6 @@ const _ = require('underscore');
 
 const setSongTitle = (songTitle) => _.escape(songTitle).trim();
 const setArtist = (artist) => _.escape(artist).trim();
-const setAlbum = (album) => _.escape(album).trim();
-const setDuration = (duration) => _.escape(duration).trim();
 const setImageURL = (imageURL) => _.escape(imageURL).trim();
 
 const SongSchema = new mongoose.Schema({
