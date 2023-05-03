@@ -151,9 +151,6 @@ const init = () => {
         e.preventDefault(); 
         ReactDOM.render(<LoginWindow />,
             document.getElementById('content')); 
-
-         
-
     });
 
     signupButton.addEventListener('click', (e) => {

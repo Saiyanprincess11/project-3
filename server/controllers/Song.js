@@ -75,6 +75,7 @@ const getSongID = async (req, res) => {
   }
 };
 
+//Gets song 
 const showResults = async (req, res) => {
   const songData = {
     songTitle: req.body.songTitle,
@@ -105,6 +106,8 @@ const getSongs = async (req, res) => {
   }
 };
 
+
+//Gets search term to build RUL for API search 
 const getSearch = async (req, res) => {
   if(!req.body.term){
     return res.status(400).json({ error: 'Search Term required' });
@@ -154,9 +157,6 @@ const showSearchRes = async (req, res) => {
       return res.status(500);
     }
 };
-
-
-
 
 
 module.exports = {

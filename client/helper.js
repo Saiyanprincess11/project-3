@@ -73,10 +73,10 @@
     document.getElementById('music-data-footer').classList.remove('is-hidden'); 
   };
 
+  //Hides Playlist Card data
   const hidePlaylistData = (id) => {
     //document.getElementById(id).classList.add('is-hidden');
   }
-
   const showPlaylistData = (id) => {
 
     console.log(id); 
@@ -112,7 +112,6 @@
     }
   };
 
-  
 
   //Hides error pop-up
   const hideError = () => {

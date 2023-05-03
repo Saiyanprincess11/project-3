@@ -16,6 +16,7 @@ const requiresLogout = (req, res, next) => {
 };
 
 // Restricts non-premium members
+//Not Implemented yet
 const requiresPremium = (req, res, next) => {
   if (req.session.account) {
     return res.redirect('/');

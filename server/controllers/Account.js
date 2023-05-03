@@ -68,6 +68,7 @@ const signup = async (req, res) => {
 
 // -- To Fix --
 // Changes password
+//Bug: Changes passwrod but cant login with new credentials 
 const changePassword = async (req, res) => {
   // const username = `${req.body.username}`;
   const newPass = `${req.body.newPass}`;
