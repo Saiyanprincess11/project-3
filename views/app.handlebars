@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>WeJam</title>
+  <link rel="shortcut icon" href="/assets/img/favicon.png"/>
+  <link rel="stylesheet" type="text/css" href="/assets/app-style.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+  <!--Navigation Bar-->
+  <div id="nav">
+  </div>
+
+  <!--Searchbar-->
+  <div class="box has-background-black">
+      <div class="content" style="width: 40%" id="searchBar">
+
+      </div>
+  </div>
+
+  <!--Music card--> 
+  <div class="card has-background-warning" style="width: 40%;">
+    <header class="card-header has-background-warning">
+      <p class="card-header-title has-background-warning is-size-4">
+        Song Title
+      </p>
+      <!--Show More Button-->
+      <button class="card-header-icon" aria-label="more options" id="showMoreBtn">
+        <span class="icon has-background-warning">
+          <i class="fa fa-angle-down has-background-warning has-text-black" aria-hidden="true"></i>
+        </span>
+      </button>
+      <!--Add to Playlist Button-->
+      <button class="card-header-icon" aria-label="add to playlist">
+        <span class="icon has-background-warning">
+          <i class="fa fa-plus has-background-warning has-text-black" aria-hidden="true"></i>
+        </span>
+      </button>
+    </header>
+    <!--Music Data-->
+    <div class="card-content" id="music-data">
+      <div class="columns has-background-warning">
+        <!--Image-->
+        <div class="column has-background-warning">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="/assets/img/homeimg.png " class="has-background-warning" alt="Placeholder image">
+            </figure>
+          </div>
+        </div>
+
+        <!--Content-->
+        <div class="column has-background-warning">
+          <div class="content has-background-warning is-size-5 has-text-black">
+            <br>Title: 
+            <br>Artist: 
+            <br>Duration: 
+            <br>Album:  
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <footer class="card-footer has-background-warning is-justify-content-center py-2" id="music-data-footer">
+      <!--Show Less Button-->
+      <button id="showLessBtn" class="is-rounded is-info button">Show Less</button>
+    </footer>
+  </div>
+
+  <!--Add Playlist Form--> 
+  <section id="makePlaylist">
+   
+  </section>
+  <!--Playlists-->
+  <section id="playlists" style="width: 50%">
+
+  </section>
+
+  <!--Add Songs Form-->
+  <section id="addSong">
+
+  </section>
+  
+  <!--Songs-->
+  <section id="songs">
+
+  </section>
+
+
+  <!--Add Song To Playlist Form-->
+  <section id="findSong">
+
+  </section>
+
+  <!--API Search Form-->
+  <section id="searchSong">
+
+  </section>
+  <section id="results">
+    
+  </section>
+
+
+   
+
+ <!--Playlists Cards-->
+  <section id="playlist-card">
+
+  </section>
+  <section id="playlist-error">
+    
+  </section>
+  
+  <script src="/assets/appBundle.js"></script>
+</body>
+</html>
