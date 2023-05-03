@@ -19,55 +19,44 @@
       </div>
   </div>
 
-  <!--Music card--> 
-  <div class="card has-background-warning" style="width: 40%;">
+  <!--Music card 
+  <div class="card has-background-warning" style="width: 30%;">
     <header class="card-header has-background-warning">
-      <p class="card-header-title has-background-warning is-size-4">
+      <p class="song-title card-header-title has-background-warning is-size-4" id="song-title">
         Song Title
       </p>
-      <!--Show More Button-->
       <button class="card-header-icon" aria-label="more options" id="showMoreBtn">
         <span class="icon has-background-warning">
           <i class="fa fa-angle-down has-background-warning has-text-black" aria-hidden="true"></i>
         </span>
       </button>
-      <!--Add to Playlist Button-->
       <button class="card-header-icon" aria-label="add to playlist">
         <span class="icon has-background-warning">
           <i class="fa fa-plus has-background-warning has-text-black" aria-hidden="true"></i>
         </span>
       </button>
     </header>
-    <!--Music Data-->
     <div class="card-content" id="music-data">
       <div class="columns has-background-warning">
-        <!--Image-->
         <div class="column has-background-warning">
           <div class="card-image">
             <figure class="image is-4by3">
-              <img src="/assets/img/homeimg.png " class="has-background-warning" alt="Placeholder image">
+              <img src="/assets/img/homeimg.png" id="song-imageURL" class="song-imageURL has-background-warning" alt="Song image">
             </figure>
           </div>
         </div>
 
-        <!--Content-->
         <div class="column has-background-warning">
           <div class="content has-background-warning is-size-5 has-text-black">
-            <br>Title: 
-            <br>Artist: 
-            <br>Duration: 
-            <br>Album:  
+            <h4 class="song-title has-background-warning">Title:</h4> 
+            <h4 class="song-artist has-background-warning">Artist:</h4> 
           </div>
         </div>
       </div>
       
     </div>
-    <footer class="card-footer has-background-warning is-justify-content-center py-2" id="music-data-footer">
-      <!--Show Less Button-->
-      <button id="showLessBtn" class="is-rounded is-info button">Show Less</button>
-    </footer>
   </div>
-
+-->
   <!--Add Playlist Form--> 
   <section id="makePlaylist">
    
@@ -98,6 +87,7 @@
 
   </section>
   <section id="results">
+    Search Results: 
     
   </section>
 

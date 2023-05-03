@@ -3,7 +3,6 @@ const React = require('react');
 const ReactDOM = require('react-dom'); 
 
 //React Components 
-//About Domo 
 const LoginWindow = (props) => {
     return(
         <form id="loginForm"
@@ -25,7 +24,7 @@ const LoginWindow = (props) => {
 const init = () => {
     ReactDOM.render(
         <LoginWindow />,
-        document.getElementById('makeDomo') 
+        document.getElementById('content') 
     );
 }
 

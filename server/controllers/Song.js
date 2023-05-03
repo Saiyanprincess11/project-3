@@ -127,11 +127,11 @@ const showSearchRes = async (req, res) => {
   //Holds retrieved data 
   const searchData = {
     term: req.body.term, 
-    limit: 3,
+    limit: 20,
     owner: req.session.account._id,
   };     
   
-  const url = `https://shazam.p.rapidapi.com/search?term=${searchData.term}&locale=en-US&offset=0&limit=${searchData.limit}`;
+  const url = `https://shazam.p.rapidapi.com/search?term=${req.body.term}&locale=en-US&offset=0&limit=${searchData.limit}`;
   const options = {
     method: 'GET',
     headers: {
@@ -141,17 +141,21 @@ const showSearchRes = async (req, res) => {
   };
 
   try {
-      //Retrieves API Data
+    //Retrieves API Data
       const response = await fetch(url, options);
       const data = await response.json();
       const results = data.tracks.hits;
       //Push Hits to Song 
+
+      console.log(results); 
       return res.status(200).json({results});
     } catch (err) {
       console.log(err);
       return res.status(500);
     }
 };
+
+
 
 
 

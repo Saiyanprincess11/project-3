@@ -98,7 +98,6 @@
     });
   
     const result = await response.json();
-    //document.getElementById('domoMessage').classList.add('hidden');
   
     if(result.redirect) {
       window.location = result.redirect;

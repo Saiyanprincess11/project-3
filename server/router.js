@@ -27,6 +27,8 @@ const router = (app) => {
   app.get('/getSearchTerm', mid.requiresLogin, controllers.Song.getSearch);
   app.post('/getSearchTerm', mid.requiresLogin, controllers.Song.showSearchRes);
 
+
+
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 

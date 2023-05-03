@@ -108,7 +108,7 @@ const AddSongToPlaylistForm = (props) => {
           <input id="playlist-id" type="text" name="song-id" placeholder="Find Playlist" />
           <label htmlFor="getSong">Get Song: </label>
           <input id="song-id" type="text" name="song-id" placeholder="Find Song" />
-          <input type="submit" value="Get Song ID" className="getSongID" />
+          <input type="submit" value="Add Song To Playlist" className="getSongID" />
         </form>
     );
 };  
@@ -148,6 +148,7 @@ const handleGetSearchTerm = (e) => {
 
     //Sends searchTerm to server 
     helper.sendPost(e.target.action,{term}, loadSearchTermFromServer); 
+
     false; 
 }; 
 
@@ -167,8 +168,11 @@ const loadSearchTermFromServer = async () => {
       });
     
     const data = await response.json();
-    console.log(`Client Data: ${(data.results)}`); 
-    
+    ReactDOM.render(
+        <ResultList results = {data.results} />,
+        document.getElementById('results')
+    );
+    console.log(`Client Data: ${(JSON.stringify(data.results))}`); 
     
 }; 
 
@@ -180,7 +184,6 @@ const loadAPICallFromServer = (props) => {
 
 
 const ResultList = (props) => {
-    loadSongsFromServer(); 
     //No songs added 
     if(props.results.length === 0){
         return(
@@ -192,18 +195,19 @@ const ResultList = (props) => {
 
     const resNodes = props.results.map(song => {
         return(
-            
-            <div key={song._id} className="song">
-                <h3 class="song-title" id={song.songTitle}>Title: {song.songTitle}</h3>
-            <hr></hr>
-            </div>
-        );
+        <div key={song._id} className="song" class="py-4"> 
+            <h3 class="song-title" id={song.track.title}>Title: {song.track.share.subject}</h3>
+            <h3 class="song-artist" id={song.track.subtitle}>Subtitle: {song.track.subtitle}</h3>
+            <a href={song.track.images.background}>View Cover Art</a>
+        </div>
+        ); 
+        
     });
 
 
     return(
         <div className="resList">
-            <h3 className="emptyRes">{resNodes}</h3>
+            <h3 className="results">{resNodes}</h3>
         </div>
     );
    
@@ -219,16 +223,14 @@ const handleSong = (e) => {
     
     const songTitle = e.target.querySelector('#song-title').value; 
     const artist = e.target.querySelector('#song-artist').value; 
-    const album = e.target.querySelector('#album-title').value; 
-    const duration = e.target.querySelector('#song-duration').value; 
     const imageURL = e.target.querySelector('#song-imageURL').value; 
 
-    if(!songTitle || !artist || !duration || !imageURL){
+    if(!songTitle || !artist || !imageURL){
         console.log('All fields are required'); 
         return false;
     }
 
-    helper.sendPost(e.target.action, {songTitle, artist, album, duration, imageURL}, loadSongsFromServer); 
+    helper.sendPost(e.target.action, {songTitle, artist, imageURL}, loadSongsFromServer); 
     return false;
 };
 const SongForm = (props) => {
@@ -243,10 +245,6 @@ const SongForm = (props) => {
           <input id="song-title" type="text" name="song-title" placeholder="Song Title" />
           <label htmlFor="artist">Artist: </label>
           <input id="song-artist" type="text" name="song-artist" placeholder="Artist" />
-          <label htmlFor="albumTitle">Album: </label>
-          <input id="album-title" type="text" name="album-title" placeholder="Album" />
-          <label htmlFor="songDuration">Duration: </label>
-          <input id="song-duration" type="text" name="song-duration" placeholder="Duration" />
           <label htmlFor="songImageURL">Image URL: </label>
           <input id="song-imageURL" type="text" name="song-imageURL" placeholder="Image URL" />
           <input type="submit" value="Make Song" className="makeSong" />
@@ -274,8 +272,6 @@ const SongList = (props) => {
                 >
                     <h3 class="song-title" id={song.songTitle}>Title: {song.songTitle}</h3>
                     <h3 class="song-artist" id={song.artist}>Artist: {song.artist}</h3>
-                    <h3 class="song-album" id ={song.album}>Album: {song.album}</h3>
-                    <h3 class="song-duration" id={song.duration}>Duration:{song.duration} </h3>
                     <h3 class="song-imageURL" id={song.imageURL}>Image URL:{song.imageURL} </h3>
                     <input type='submit' value="X" className="removeSong"></input>
                 </form>
@@ -415,7 +411,7 @@ const handlePlaylist = (e) => {
     //Form Variables 
     const title = e.target.querySelector('#playlist-title').value; 
     const description = e.target.querySelector('#playlist-description').value; 
-    const privacy = e.target.querySelector('input[name=playlist-privacy]:checked').value;
+    const privacy = e.target.querySelector('input[name=playlist-privacy]:checked').id;
 
     //Ensures all fields are filled
     if(!title){
@@ -475,7 +471,7 @@ const PlaylistList = (props) => {
                     class="card has-background-warning"
                 >
                     <header class="card-header has-background-warning">
-                    <p class="card-header-title has-background-warning is-size-4" id={playlist.title}>
+                    <p class="card-header-title has-background-warning is-size-4 playlist-title" id={playlist.title}>
                         {playlist.title}
                     </p>
                     <button class="card-header-icon" aria-label="more options" id="showMoreBtn">
@@ -501,10 +497,10 @@ const PlaylistList = (props) => {
 
                             <div class="column has-background-warning">
                             <div class="content has-background-warning is-size-5 has-text-black">
-                                <h3 class="playlist-description" id={playlist.description}>Description: {playlist.description}</h3>
-                                <h3 class="playlist-privacy" id={playlist.privacy}>Privacy Setting: {playlist.privacy}</h3>
-                                <h3 class="playlist-songs">Songs:</h3>
-                                <ol>
+                                <h3 class="playlist-description has-background-warning" id={playlist.description}>Description: {playlist.description}</h3>
+                                <h3 class="playlist-privacy has-background-warning" id={playlist.privacy}>Privacy Setting: {playlist.privacy}</h3>
+                                <h3 class="playlist-songs has-background-warning">Songs:</h3>
+                                <ol class="has-background-warning">
                                     {songNodes}
                                 </ol>
                             </div>
@@ -666,6 +662,7 @@ const SearchBar = (props) => {
                     <div class="has-background-black px-3">
                         <div class="control has-background-black">
                         <button class="button is-rounded is-success">Search Song</button>
+                        <input type="reset" value="reset" />
                         </div>
                     </div>
 
@@ -727,9 +724,6 @@ const init = () => {
         document.getElementById('results') 
     ); */
 
-    //Button Event Listeners 
-    document.getElementById('showLessBtn').addEventListener('click', helper.hideData); 
-    document.getElementById('showMoreBtn').addEventListener('click', helper.showData); 
 
     loadPlaylistsFromServer(); 
     loadSongsFromServer();
